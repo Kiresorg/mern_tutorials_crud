@@ -1,5 +1,5 @@
-const db = require("../models");
-const Tutorial = db.tutorials;
+const db = require("../models"); // connect to ODM
+const Tutorial = db.tutorials; // tuts from the dB
 
 // create, save
 exports.create = (req, res) => {
@@ -31,7 +31,7 @@ exports.create = (req, res) => {
 };
 
 // get all tutorials
-exports.findAll = (req, res) => {
+exports.findAllTuts = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { $regex: new RegExp(title), $options: "i" }} : {}
 
@@ -46,6 +46,7 @@ exports.findAll = (req, res) => {
             });
         });
 };
+
 
 // get tutorial by id
 exports.findOne = (req, res) => {
